@@ -88,13 +88,13 @@ def main():
 
 	block_size = 0.25
 	arena_size = 25 * block_size
-	x_change, y_change, z_change = 0, 0, 0
+	x_change, y_change, z_change = block_size, 0, 0
 	x, y, z = 0, 0, 0
 	score = 0
 	x_enable = y_enable = z_enable = True
 
 	snakelen = 1
-	snakelist = [(x, y, z)]
+	snakelist = []
 
 	apple_x = round((random.randrange( - (arena_size - block_size) / 2, (arena_size - block_size) / 2)) / block_size) * block_size
 	apple_y = round((random.randrange( - (arena_size - block_size) / 2, (arena_size - block_size) / 2)) / block_size) * block_size
@@ -136,7 +136,7 @@ def main():
 				elif event.key == pygame.K_s and z_enable:
 					x_change, y_change, z_change = 0, 0, block_size
 					x_enable, y_enable, z_enable = True, True, False
-				elif event.key == pygame.K_PLUS: # Cheat Code :p
+				elif event.key == pygame.K_p: # Cheat Code :p
 					snakelen += 1
 					score += 1
 
@@ -144,7 +144,6 @@ def main():
 		x += x_change
 		y += y_change
 		z += z_change
-
 		snakelist.append((x, y, z))
 
 		# Hit Boundaries
